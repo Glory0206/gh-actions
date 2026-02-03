@@ -1,12 +1,18 @@
 name: 01. dispatch echo
 
 on:
-    workflow_dispatch:
-jobs:
-    echo:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Echo Message
-              run: echo Hello World
+  workflow_dispatch:
+    inputs:
+      message:
+        description: "출력할 메시지"
+        required: false
+        default: "안녕, GitHub"
 
-            - uses: actions/checkout@v2
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Message
+        run: echo "${{ inputs.message }} by ${{github.actor}}"
+
+      - uses: actions/checkout@v2
