@@ -1,0 +1,11 @@
+name: 빌드 후 GCHR 푸시
+
+on:
+  push:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: logging
+        run: echo 'Hello Docker!'
