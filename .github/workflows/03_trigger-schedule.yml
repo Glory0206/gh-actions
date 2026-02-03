@@ -1,0 +1,14 @@
+name: 03. trigger schedule
+
+on:
+  schedule:
+    - cron: "* * * * *"
+
+  workflow_dispatch:
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 스케줄 실행
+        run: echo "스케줄 실행 ${date}"

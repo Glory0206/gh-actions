@@ -2,10 +2,17 @@ name: 02. trigger push
 
 on:
   push:
+    branches:
+      #   - "**"
+      - "main"
 
 jobs:
   eho:
     runs-on: ubuntu-latest
     steps:
-      - name: 푸시 시 메시지 출력
+      - name: "현재 푸시 된 브랜치 명: ${{github.ref_name}}"
+        if: ${{github.ref_name == 'main'}}
         run: echo "push가 감지되었습니다 (${{github.ref_name}})"
+      - name: 메인 외 브랜치에 대한 푸시
+        if: ${{github.ref_name != 'main'}}
+        run: echo "main이 아닌 브랜치에 대한 push가 감지되었습니다 (${{github.ref_name}})"
