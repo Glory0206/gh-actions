@@ -1,0 +1,12 @@
+name: 01. dispatch echo
+
+on:
+    workflow_dispatch:
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo Message
+              run: echo Hello World
+
+            - uses: actions/checkout@v2
